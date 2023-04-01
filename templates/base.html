@@ -1,0 +1,42 @@
+{% load static %}
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	{% comment %} <link rel="stylesheet" href="{% static 'css/c1.css' %}"> {% endcomment %}
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" />
+
+    <script src="./index.js"></script>
+    <style media="screen">
+      #map {
+  height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+</style>
+</head>
+<body>
+<center>
+	<div id="nav">
+		<a href="{% url 'home' %}">Disease Prediction</a>
+		<a href="{% url 'firstAid' %}">First Aid </a>
+		<a href="{% url 'maps' %}">Maps</a>
+		<a href="{% url 'docRecommend' %}">Doctors</a>
+	</div>
+	<br>
+	{% block content %} {% endblock %}
+		
+</center>
+
+
+</body>
+</html>

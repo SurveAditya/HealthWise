@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}First Aid {% endblock %}
+{% block content %}
+<table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Specialty</th>
+        <th>Location</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Dr. Aditya Surve</td>
+        <td>Cardiology</td>
+        <td>Bandra , Mumbai</td>
+        <td><button onclick="openWhatsAppChat('9930025350')">Connect</button></td>
+      </tr>
+      <tr>
+        <td>Dr. Gauri Surve</td>
+        <td>Dermatology</td>
+        <td>Andheri , Mumbai</td>
+        <td><button onclick="openWhatsAppChat('9167948322')">Connect</button></td>
+      </tr>
+    </tbody>
+  </table>
+    <script>
+        function openWhatsAppChat(number) {
+            const message = "Hi, I would like to connect with you regarding my health.";
+            const url = `https://api.whatsapp.com/send?phone=${number}&text=${encodeURIComponent(message)}`;
+            window.open(url, "_blank");
+          }
+    </script>
+  
+{% endblock %}

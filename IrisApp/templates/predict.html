@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Disease Prediction{% endblock %}
+{% block content %}
+<h1>Disease Prediction Application</h1>
+<hr>
+{% if result %}
+    <h1>The predicted disease is {{result}}</h1>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    <select multiple name="options" id="my-select">
+        {% for symptom in symptoms %}
+            <option value="{{symptom}}">{{symptom}}</option>
+        {% endfor %}
+    </select>
+    <input type="submit">
+</form>
+  <script>
+    $(document).ready(function() {
+      $('#my-select').select2({
+        placeholder: 'Search for an option'
+      });
+  
+      $('#my-form').on('submit', function(e) {
+        e.preventDefault();
+  
+        // Get the selected values from the multi-select input field
+        const formData = new FormData(this);
+        const selectedValues = formData.getAll('options');
+  
+        // Create a POST request to your Django backend
+        fetch('/', {
+          method: 'POST',
+          body: JSON.stringify(selectedValues),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          console.log('Response:', response);
+          // Do something with the response from your Django backend
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+      });
+    });
+  </script>
+  {% if my_info %}
+    <h2>Information:</h2>
+    <ul>
+        {% for info in my_info %}
+            <li>{{ info }}</li>
+        {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}
