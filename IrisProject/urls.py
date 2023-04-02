@@ -16,12 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from IrisApp.views import diseasePrediction, firstAid , doctorRecommendation,docMaps
+from auapp.views import user_login , user_signup , user_logout , landing , contact
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", diseasePrediction, name="home" ),
     path("firstAid/", firstAid, name="firstAid"),
     path("maps/", docMaps, name="maps"),
-    path("docRecommend/", doctorRecommendation, name="docRecommend")
+    path("docRecommend/", doctorRecommendation, name="docRecommend"),
+    path("user_login/", user_login, name="user_login"),
+    path("user_signup/", user_signup, name="user_signup"),
+    path("user_logout/", user_logout, name="user_logout"),
+    path("landing/", landing, name="landing"),
+    path("contact/", contact, name="contact"),
+    
     
     
 ]

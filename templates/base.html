@@ -28,10 +28,18 @@ body {
 <body>
 <center>
 	<div id="nav">
-		<a href="{% url 'home' %}">Disease Prediction</a>
-		<a href="{% url 'firstAid' %}">First Aid </a>
-		<a href="{% url 'maps' %}">Maps</a>
-		<a href="{% url 'docRecommend' %}">Doctors</a>
+		{% if user.is_authenticated %}
+			<a href="{% url 'user_logout' %}">Logout</a>
+			<a href="{% url 'home' %}">Disease Prediction</a>
+			<a href="{% url 'firstAid' %}">First Aid </a>
+			<a href="{% url 'maps' %}">Maps</a>
+			<a href="{% url 'docRecommend' %}">Doctors</a>
+		{% else %}
+			<a href="{% url 'user_signup' %}">Sign Up</a>
+			<a href="{% url 'user_login' %}">Login</a>
+			<a href="{% url 'landing' %}">Home</a>
+			<a href="{% url 'contact' %}">Contact Us</a>
+		{% endif %}
 	</div>
 	<br>
 	{% block content %} {% endblock %}
