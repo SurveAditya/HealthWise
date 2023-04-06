@@ -1,4 +1,4 @@
-# MPR
+# HealthWise
 Introduction:
 People rely heavily on the internet for medical advice, but the lack of reliable online tools results in unnecessary healthcare visits, burdening the system. This
 can happen if the facility is far away or if you feel unwell at odd hours. Our website helps users detect basic non-serious diseases based on their symptoms, encouraging early
